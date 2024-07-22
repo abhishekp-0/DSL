@@ -1,0 +1,47 @@
+def linearSearch(l,n):
+    count = 0
+    for i in range(len(l)):
+        count+=1
+        if(l[i]==n):
+            print("key found after ", count , " comparisons at position ", i+1, " with Linear Search")
+            return i
+    print("Key not found with Linear Search!!")
+    return -1    
+    
+def binarySearch(key,a,f,l):
+    count=0
+    while(f<=l):
+        count+=1
+        mid=int((f+l)/2)
+        if(key==a[mid]):
+            print("key found after ", count , " comparisons at position ", mid+1 , " with Binary Search")
+            return mid+1
+        elif(a[mid]<key) :
+            f=mid+1
+        elif(a[mid]>key):
+            l=mid-1
+    print("Key not found with Binary Search!!")
+    return -1
+           
+
+flag=1
+while (flag==1):
+    a=[]
+    n=int(input("Enter no.of elements in array"))
+    for i in range(n):
+        x=int(input("Enter element"))
+        a.append(x)
+    
+    key=int(input("Enter element to be searched : "))
+    
+    linearSearch(a,key)
+    binarySearch(key,a,0,len(a)-1)
+    r=input("Do you want to continue (y/n) : ")
+    if(r=="y"):
+        flag=1
+    else:
+        flag=0
+
+
+
+ 
