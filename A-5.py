@@ -36,8 +36,30 @@ def binarySearch(key,a,f,l):
             f=mid+1
         elif(a[mid]>key):
             l=mid-1
+        
     print("Key not found with Binary Search!! Comparisions done : " ,count)
     return -1
+
+def recursiveBinarySearch(key,a,f,l):
+    count=0
+    a.sort()
+    if(f>l):
+        print("Key not found with Recursive Binary Search!! Comparisions done : " ,count)
+        return -1
+    
+    count+=1
+    mid=int((f+l)/2)
+    if(key==a[mid]):
+        print("key found after ", count , " comparisons at position ", mid+1 , " with Recursive Binary Search")
+        return mid+1
+    elif(a[mid]<key) :
+        f=mid+1
+    elif(a[mid]>key):
+        l=mid-1
+    
+    recursiveBinarySearch(key,a,f,l)
+        
+    
 
 a=[]
 n=int(input("Enter no.of elements in array"))
@@ -45,6 +67,7 @@ for i in range(n):
     x=int(input("Enter element"))
     a.append(x)        
 
+rcount=0
 flag=1
 while (flag==1):
     
@@ -52,6 +75,7 @@ while (flag==1):
     linearSearch(a,key)
     binarySearch(key,a,0,len(a)-1)
     sentinelSearch(a,key)
+    recursiveBinarySearch(key,a,0,len(a)-1)
     r=input("Do you want to continue (y/n) : ")
     if(r=="y"):
         flag=1
